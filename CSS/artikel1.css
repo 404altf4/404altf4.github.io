@@ -1,0 +1,36 @@
+/* Gambar dalam card */
+.artikel1-page .image-box {
+  text-align: center;
+  margin: 1rem 0;
+}
+.artikel1-page .image-box img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255,68,68,0.5);
+  cursor: pointer;
+}
+.artikel1-page .timeline {
+  background: #222;
+  color: #ffffff;
+  margin: 0.1rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 900px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.artikel1-page .timeline:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(228, 9, 9, 0.897);
+}
+.artikel1-page .timeline h2 {
+  margin-bottom: 1rem;
+  color: #007BFF;
+  font-size: 1.6rem;
+  border-left: 4px solid #007BFF;
+  padding-left: 0.5rem;
+}
+.artikel1-page .timeline p {
+  margin-bottom: 0.8rem;
+}

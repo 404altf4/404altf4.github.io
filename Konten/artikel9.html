@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Satu Hari Cerita - Element Blocks</title>
+  <link rel="stylesheet" href="../../CSS/style.css">
+  <link rel="stylesheet" href="../../CSS/artikel9.css">
+</head>
+<body>
+
+  <header>
+    <div class="title-section">
+      <h1>Tetris</h1>
+    </div>
+    <nav class="menu-section">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+        <li><a href="../rumus.html">Rumus</a></li>
+        <li class="search-menu">
+          <input type="text" id="searchInput" placeholder="Cari postingan...">
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div id="game-zone">
+    <div class="hud-container">
+      <div id="score" class="hud-item">Skor: 0</div>
+      <div id="level" class="hud-item">Level: 0</div>
+      <div id="bestScore" class="hud-item">Best Skor: 0</div>
+    </div>
+
+    <div class="layout">
+      <canvas id="gameCanvas" width="300" height="600"></canvas>
+      <div class="next-piece">
+        <h3>Next Block</h3>
+        <canvas id="nextCanvas" width="120" height="120"></canvas>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button id="playBtn">Play</button>
+      <button id="restartBtn" style="display: none;">Restart</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Game 2D Website</p>
+  </footer>
+
+  <script src="/js/games/artikel9.js"></script>
+</body>
+</html>

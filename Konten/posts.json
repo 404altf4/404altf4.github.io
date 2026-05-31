@@ -1,0 +1,83 @@
+[
+  {
+    "id": "artikel9",
+    "type": "artikel",
+    "title": "Tetris",
+    "desc": "Game Tetris.",
+    "link": "Konten/artikel9.html",
+    "image": "Images/game1.png",
+    "category": "games"
+  },
+  {
+    "id": "artikel8",
+    "type": "artikel",
+    "title": "Game 2D Website",
+    "desc": "Game 2D Website.",
+    "link": "Konten/artikel8.html",
+    "image": "Images/game.png",
+    "category": "games"
+  },
+  {
+    "id": "artikel7",
+    "type": "artikel",
+    "title": "Rumus Jajar Genjang",
+    "desc": "Rumus Jajar Genjang.",
+    "link": "Konten/artikel7.html",
+    "image": "Images/rumus3.png",
+    "category": "rumus"
+  },
+  {
+    "id": "artikel6",
+    "type": "artikel",
+    "title": "Kalkulator Persegi",
+    "desc": "Kalkulator Persegi.",
+    "link": "Konten/artikel6.html",
+    "image": "Images/rumus2.png",
+    "category": "rumus"
+  },
+  {
+    "id": "artikel5",
+    "type": "artikel",
+    "title": "Kalkulator Persegi Panjang",
+    "desc": "Kalkulator Persegi Panjang.",
+    "link": "Konten/artikel5.html",
+    "image": "Images/rumus1.png",
+    "category": "rumus"
+  },
+  {
+    "id": "artikel4",
+    "type": "artikel",
+    "title": "Masalah Hard Disk Drive (HDD) Tidak Terbaca",
+    "desc": "Panduan memperbaiki HDD yang tidak terbaca di laptop atau komputer.",
+    "link": "Konten/artikel4.html",
+    "image": "Images/disk.png",
+    "category": "hardware"
+  },
+  {
+    "id": "artikel3",
+    "type": "artikel",
+    "title": "Mematikan AutoPlay di Windows 11",
+    "desc": "Langkah-langkah untuk menonaktifkan AutoPlay secara manual di Windows 11.",
+    "link": "Konten/artikel3.html",
+    "image": "Images/wini.png",
+    "category": "windows"
+  },
+  {
+    "id": "artikel2",
+    "type": "artikel",
+    "title": "Game Mengetik 10 Jari",
+    "desc": "Belajar sambil bermain dengan game mengetik interaktif.",
+    "link": "Konten/artikel2.html",
+    "image": "Images/keyboard.png",
+    "category": "games"
+  },
+    {
+    "id": "artikel1",
+    "type": "artikel",
+    "title": "Sejarah Windows",
+    "desc": "Windows pertama kali dirilis tahun 1985 sebagai antarmuka grafis di atas MS-DOS, dan sejak itu berkembang menjadi sistem operasi dominan.",
+    "link": "Konten/artikel1.html",
+    "image": "Images/windows.png",
+    "category": "tech"
+  }
+]

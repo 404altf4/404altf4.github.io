@@ -1,0 +1,79 @@
+/* rumus.css */
+
+/* Bungkus seluruh halaman Rumus */
+.games-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout utama: konten + sidebar */
+.games-page .layout {
+  display: flex;
+  justify-content: center;   /* konten selalu di tengah */
+  align-items: flex-start;   /* sidebar sejajar atas */
+  gap: 20px;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Konten utama */
+.games-page #post-list {
+  flex: 2;                   /* lebih lebar dari sidebar */
+  max-width: 800px;          /* batas maksimal agar nyaman dibaca */
+}
+
+/* Sidebar */
+.games-page .popular-posts {
+  flex: 1;
+  max-width: 300px;
+}
+
+/* Artikel */
+.games-page .timeline {
+  background: #222;
+  color: #eee;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Gambar artikel */
+.games-page .post-thumb {
+  width: 100%;               /* isi penuh kontainer */
+  max-width: 250px;          /* batas maksimal */
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .games-page .layout {
+    flex-direction: column;  /* konten dan sidebar turun ke bawah */
+    align-items: center;
+  }
+
+  .games-page #post-list,
+  .games-page .popular-posts {
+    max-width: 100%;
+  }
+
+  .games-page .post-thumb {
+    max-width: 100%;
+  }
+}
+.games-page .popular-posts li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.games-page .popular-posts img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}

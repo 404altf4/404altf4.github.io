@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Jajar Genjang</title>
+  <link rel="stylesheet" href="../../CSS/style.css">
+  <link rel="stylesheet" href="../../CSS/artikel7.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body class="artikel7-page" data-article-id="artikel7">
+  <!-- Header -->
+  <header>
+    <div class="title-section">
+      <h1>Kalkulator Jajar Genjang</h1>
+    </div>
+    <!-- Menu Navigasi -->
+  <nav class="menu-section">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../games.html">Games</a></li>
+      <li><a href="../rumus.html">Rumus</a></li>
+      <li class="search-menu">
+        <input type="text" id="searchInput" placeholder="Cari postingan...">
+      </li>
+    </ul>
+  </nav>
+  </header>
+ <!-- Gambar rumus -->
+  <div class="image-box">
+    <a href="../Images/rumus3.png" target="_blank">
+      <img src="../Images/rumus3.png" alt="Rumus Jajar Genjang">
+    </a>
+  </div>
+  <!-- Konten utama -->
+  <div class="container">
+    <h2>Rumus Jajar Genjang</h2>
+    <p>Isi nilai sesuai kondisi yang diketahui, kalkulator akan menghitung otomatis.</p>
+    <p>Keliling: \( K = 2(a+b) \)</p>
+
+  <p>Luas: \( L = a \times t \)</p>
+
+  <p>Alas: \( a = \frac{L}{t} \)</p>
+
+  <p>Tinggi: \( t = \frac{L}{a} \)</p>
+
+  <p>Sisi miring: \( b = \frac{K}{2} - a \)</p>
+
+    <label>Alas (a):</label>
+    <input type="number" id="alas" oninput="hitungJajarGenjang()">
+
+    <label>Tinggi (t):</label>
+    <input type="number" id="tinggi" oninput="hitungJajarGenjang()">
+
+    <label>Sisi Miring (b):</label>
+    <input type="number" id="sisiMiring" oninput="hitungJajarGenjang()">
+
+    <label>Luas (L):</label>
+    <input type="number" id="luas" oninput="hitungJajarGenjang()">
+
+    <label>Keliling (K):</label>
+    <input type="number" id="keliling" oninput="hitungJajarGenjang()">
+
+    <div class="result" id="hasil">Masukkan nilai untuk menghitung...</div>
+
+    <div class="preview">
+      <div class="jajargenjang">
+        <span id="alasLabel" class="label">a = …</span>
+        <span id="tinggiLabel" class="label">t = …</span>
+        <span id="sisiMiringLabel" class="label">b = …</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Kalkulator Jajar Genjang</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="/js/rumus/artikel7.js"></script>
+</body>
+</html>

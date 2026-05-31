@@ -1,0 +1,79 @@
+/* rumus.css */
+
+/* Bungkus seluruh halaman Rumus */
+.rumus-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout utama: konten + sidebar */
+.rumus-page .layout {
+  display: flex;
+  justify-content: center;   /* konten selalu di tengah */
+  align-items: flex-start;   /* sidebar sejajar atas */
+  gap: 20px;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Konten utama */
+.rumus-page #post-list {
+  flex: 2;                   /* lebih lebar dari sidebar */
+  max-width: 800px;          /* batas maksimal agar nyaman dibaca */
+}
+
+/* Sidebar */
+.rumus-page .popular-posts {
+  flex: 1;
+  max-width: 300px;
+}
+
+/* Artikel */
+.rumus-page .timeline {
+  background: #222;
+  color: #eee;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Gambar artikel */
+.rumus-page .post-thumb {
+  width: 100%;               /* isi penuh kontainer */
+  max-width: 250px;          /* batas maksimal */
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .rumus-page .layout {
+    flex-direction: column;  /* konten dan sidebar turun ke bawah */
+    align-items: center;
+  }
+
+  .rumus-page #post-list,
+  .rumus-page .popular-posts {
+    max-width: 100%;
+  }
+
+  .rumus-page .post-thumb {
+    max-width: 100%;
+  }
+}
+.rumus-page .popular-posts li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.rumus-page .popular-posts img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}

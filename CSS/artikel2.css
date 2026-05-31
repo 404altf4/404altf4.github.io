@@ -1,0 +1,70 @@
+/* Card */
+.artikel2-page .card {
+  background: rgba(34,34,34,0.85);
+  color: #fff;
+  border-radius: 10px;
+  text-align: left;
+  overflow: hidden;
+  margin: 0.1rem auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Gambar dalam card */
+.artikel2-page .image-box {
+  text-align: center;
+  margin: 1rem 0;
+}
+.artikel2-page .image-box img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255,68,68,0.5);
+  cursor: pointer;
+}
+.artikel2-page .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+}
+/* Heading dalam card */
+.artikel2-page .card h2 {
+  margin: 1rem;
+  font-size: 1.3rem;
+  color: #00d4ff;
+  text-align: left;
+  border-left: 4px solid #00d4ff;
+  padding-left: 0.5rem;
+}
+/* Paragraf dalam card */
+.artikel2-page .card p {
+  margin: 0 1rem 1rem;
+  line-height: 1.5;
+}
+/* Link dalam card */
+.artikel2-page .card a {
+  display: inline-block;
+  margin: 0 1rem 1rem;
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+/* Link Container */
+.artikel2-page .link-container a {
+  flex: 1 1 150px;
+  text-align: center;
+  padding: 12px;
+  background: #555; /* warna default */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Efek hover RGB sama seperti tombol menu artikel2*/
+.artikel2-page .link-container a:hover {
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rgbShift 3s ease infinite;
+  transform: translateY(-2px);
+  color: #fff; /* pastikan teks tetap putih */
+}

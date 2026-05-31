@@ -1,0 +1,60 @@
+.artikel5-page .container {
+  background: #474646;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 40px; /* beri jarak dari footer */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: #fff;
+}
+
+.artikel5-page #persegiPanjang {
+  border: 2px solid #fff;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+}
+.artikel5-page .image-box {
+  text-align: center;       /* agar gambar di tengah */
+  margin: 20px 0;
+}
+
+.artikel5-page .image-box img {
+  width: 400px;             /* atur lebar gambar */
+  height: auto;             /* biar proporsi tetap */
+  object-fit: contain;      /* gambar tetap utuh tanpa terpotong */
+  border-radius: 10px;      /* sudut sedikit melengkung */
+  transition: transform 0.3s ease; /* efek halus saat hover */
+}
+
+.artikel5-page .image-box img:hover {
+  transform: scale(1.05);   /* zoom sedikit saat mouse di atas gambar */
+}
+
+
+.artikel5-page .kotak {
+  width: 300px;   /* ukuran tetap */
+  height: 200px;
+  border: 2px solid #fff;
+  margin: 20px auto;
+  position: relative;
+}
+
+.artikel5-page .label-horiz {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: bold;
+}
+.artikel5-page .label-vert {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-weight: bold;
+}
+
+

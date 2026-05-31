@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Persegi</title>
+  <link rel="stylesheet" href="../../CSS/style.css">
+  <link rel="stylesheet" href="../../CSS/artikel6.css">
+</head>
+<body class="artikel6-page" data-article-id="artikel6">
+  <!-- Header -->
+  <header>
+    <div class="title-section">
+      <h1>Kalkulator Persegi</h1>
+    </div>
+   <!-- Menu Navigasi -->
+  <nav class="menu-section">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../games.html">Games</a></li>
+      <li><a href="../rumus.html">Rumus</a></li>
+      <li class="search-menu">
+        <input type="text" id="searchInput" placeholder="Cari postingan...">
+      </li>
+    </ul>
+  </nav>
+  </header>
+ <!-- Gambar rumus -->
+  <div class="image-box">
+    <a href="../Images/rumus2.png" target="_blank">
+      <img src="../Images/rumus2.png" alt="Rumus Persegi">
+    </a>
+  </div>
+  <!-- Konten utama -->
+  <div class="container">
+    <h2>Rumus Persegi</h2>
+    <p>Luas (L): L = s × s</p>
+    <p>Keliling (K): K = 4 × s</p>
+
+    <label for="sisi">Sisi (s):</label>
+    <input type="number" id="sisi" placeholder="Masukkan panjang sisi" oninput="updateSquare()">
+
+    <div class="result" id="hasil"></div>
+
+    <div class="preview">
+      <div id="persegi" class="kotak">
+        <!-- Label sisi -->
+        <span id="sisiLabel" class="label-horiz">s = …</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="/js/rumus/artikel6.js"></script>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Kalkulator Persegi</p>
+  </footer>
+</body>
+</html>

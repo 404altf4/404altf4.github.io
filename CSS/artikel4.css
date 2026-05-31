@@ -1,0 +1,55 @@
+/* Intro Section */
+.artikel4-page .intro-section {
+  background: #3d3d3d;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  max-width: 900px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.artikel4-page .intro-section h2 {
+  color: #007BFF;
+  margin-bottom: 1rem;
+}
+/* Card Langkah */
+.artikel4-page .card {
+  background: #444444;
+  margin: 0.1rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  max-width: 900px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.artikel4-page .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.artikel4-page .card h2 {
+  margin-bottom: 1rem;
+  color: #24cacf;
+  font-size: 1.4rem;
+  border-left: 4px solid #257bec;
+  padding-left: 0.5rem;
+}
+.artikel4-page .card p,
+.artikel4-page .card ul {
+  margin-top: 0.8rem;
+  line-height: 1.6;
+}
+.artikel4-page .card ul {
+  padding-left: 1.2rem;
+}
+/* Gambar dalam card */
+.artikel4-page .image-box {
+  text-align: center;
+  margin: 1rem 0;
+}
+/* Highlight pencarian */
+.artikel4-page mark {
+  background: yellow;
+  color: black;
+  font-weight: bold;
+}

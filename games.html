@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satu Hari Cerita - Games</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="/CSS/games.css">
+</head>
+<body class="games-page">
+  
+  <!-- Header -->
+  <header class="title-section">
+    <h1>Satu Hari Cerita - Games</h1>
+  </header>
+
+  <!-- Menu Navigasi -->
+  <nav class="menu-section">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="rumus.html">Rumus</a></li>
+      <li class="search-menu">
+        <input type="text" id="searchInput" placeholder="Cari postingan...">
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Layout Utama -->
+  <div class="layout">
+    <!-- Konten Utama -->
+    <main id="post-list"></main>
+
+    <!-- Sidebar Popular Games -->
+    <aside class="popular-posts">
+      <h2>Popular Games</h2>
+      <ul id="popular-list"></ul>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 My Website</p>
+  </footer>
+
+  <!-- Script khusus untuk filter games -->
+  <script src="./js/games/games.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satu Hari Cerita - HDD Tidak Terbaca</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="/CSS/artikel4.css">
+</head>
+<body class="artikel4-page" data-article-id="artikel4">
+  <!-- Header -->
+  <header>
+    <div class="title-section">
+      <h1>Masalah Hard Disk Drive (HDD) Tidak Terbaca</h1>
+    </div>
+  <!-- Menu Navigasi -->
+  <nav class="menu-section">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../games.html">Games</a></li>
+      <li><a href="../rumus.html">Rumus</a></li>
+      <li class="search-menu">
+        <input type="text" id="searchInput" placeholder="Cari postingan...">
+      </li>
+    </ul>
+  </nav>
+  </header>
+
+  <!-- Konten Utama -->
+  <main>
+    <section class="intro-section">
+      <h2>Panduan Mengatasi HDD Tidak Terbaca</h2>
+      <p>Langkah-langkah sistematis untuk memperbaiki masalah HDD di laptop atau komputer.</p>
+    </section>
+
+    <!-- Langkah 1 -->
+    <section class="card">
+      <div class="image-box">
+        <a href="../Images/disk.png" target="_blank">
+          <img src="../Images/disk.png" alt="Disk Management">
+        </a>
+      </div>
+      <h2>1. Cek Melalui Disk Management</h2>
+      <p>Seringkali HDD terdeteksi sistem tapi tidak muncul di File Explorer karena belum diberi Drive Letter atau statusnya masih Unallocated.</p>
+      <ul>
+        <li>Tekan <kbd>Windows</kbd> + <kbd>X</kbd> → pilih <strong>Disk Management</strong>.</li>
+        <li>Cari disk Anda di daftar bawah.</li>
+        <li><strong>Jika Unallocated:</strong> klik kanan → <em>New Simple Volume</em> → ikuti wizard.</li>
+        <li><strong>Jika Healthy tapi tidak muncul:</strong> klik kanan → <em>Change Drive Letter</em> → pilih huruf baru.</li>
+      </ul>
+    </section>
+
+    <!-- Langkah 2 -->
+    <section class="card">
+      <h2>2. Aktifkan Melalui Device Manager</h2>
+      <ul>
+        <li>Klik kanan Start → pilih <strong>Device Manager</strong>.</li>
+        <li>Buka <strong>Disk drives</strong>.</li>
+        <li>Klik kanan HDD bermasalah.</li>
+        <li>Pilih <em>Enable device</em> atau <em>Update driver</em>.</li>
+        <li>Jika perlu, <em>Uninstall device</em> lalu restart.</li>
+      </ul>
+    </section>
+
+    <!-- Langkah 3 -->
+    <section class="card">
+      <h2>3. Cek di BIOS / UEFI</h2>
+      <ul>
+        <li>Restart komputer, tekan <kbd>F2</kbd>, <kbd>Del</kbd>, atau sesuai merk.</li>
+        <li>Cek menu Storage/Boot apakah HDD terdeteksi.</li>
+        <li>Jika terdeteksi → masalah software. Jika tidak → kemungkinan kabel/fisik HDD rusak.</li>
+      </ul>
+    </section>
+
+    <!-- Langkah 4 -->
+    <section class="card">
+      <h2>4. Periksa Fisik dan Kabel</h2>
+      <p><strong>HDD Eksternal:</strong> coba port USB lain, ganti kabel, atau tes di komputer lain.</p>
+      <p><strong>HDD Internal:</strong> matikan PC, cek kabel SATA & Power, ganti kabel atau port jika perlu.</p>
+    </section>
+
+    <!-- Langkah 5 -->
+    <section class="card">
+      <h2>5. Gunakan CHKDSK</h2>
+      <ul>
+        <li>Buka <strong>Command Prompt</strong> sebagai Administrator.</li>
+        <li>Ketik: <code>chkdsk E: /f /r</code> (ganti E sesuai drive).</li>
+        <li>Tunggu proses selesai.</li>
+      </ul>
+      <p><mark>Catatan:</mark> Jika HDD berbunyi klik atau tidak berputar, kemungkinan rusak fisik. Gunakan jasa recovery data profesional bila datanya penting.</p>
+    </section>
+  </main>
+
+  <script src="/js/artikel.js"></script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Panduan HDD & Windows</p>
+  </footer>
+</body>
+</html>

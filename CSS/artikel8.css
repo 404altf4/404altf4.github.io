@@ -1,0 +1,227 @@
+/* ==========================================
+   TAMPILAN DEFAULT (WINDOWS / DESKTOP PC)
+   ========================================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  background: #222;
+  padding: 10px 0;
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  background: #222;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+/* Wadah Utama Game di PC */
+#game-zone {
+  width: 100%;
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Tombol Navigasi Mobile (Sembunyi di Windows / PC) */
+.mobile-nav-buttons {
+  display: none;
+}
+
+/* HUD Informasi Game */
+.hud-container {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.hud-item {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#score { color: #00ff00; }
+#level { color: #00ccff; }
+#bestScore { color: #ffd700; }
+
+/* Wrapper Canvas di PC */
+.canvas-container {
+  width: 100%;
+  max-width: 600px; 
+  aspect-ratio: 600 / 400;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+canvas {
+  background: #333;
+  border: 3px solid #fff;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Tombol Aksi */
+.btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+#playBtn, #restartBtn {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #00ccff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* STYLING JOYSTICK (Hanya muncul saat disentuh di HP) */
+#joystick-container {
+  display: none;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  z-index: 9999; 
+  pointer-events: none;
+}
+
+#joystick-base {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#joystick-stick {
+  width: 45px;
+  height: 45px;
+  background: rgba(0, 204, 255, 0.8);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ==========================================
+   TAMPILAN KHUSUS GADGET (MOBILE / HP)
+   ========================================== */
+@media (max-width: 768px) {
+  html, body {
+    overflow: hidden;
+    position: fixed; /* Kunci scroll halaman web bawaan di HP */
+  }
+
+  header, footer {
+    display: none !important; /* Sembunyikan header & footer web di HP agar hemat ruang */
+  }
+
+  #game-zone {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    box-sizing: border-box;
+  }
+
+  .mobile-nav-buttons {
+    display: flex;
+    width: 100%;
+    max-width: 90vw;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .mobile-nav-buttons button {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  #exitBtn {
+    background: #cc3333;
+    border-color: #aa2222;
+  }
+
+  .hud-container {
+    margin-bottom: 8px;
+    gap: 15px;
+  }
+  
+  .hud-item {
+    font-size: 14px;
+  }
+
+  /* Canvas mengikuti ukuran layar secara dinamis */
+  .canvas-container {
+    width: 100%;
+    max-width: 85vw; /* Memanfaatkan 85% lebar layar HP */
+    max-height: 55vh; /* Membatasi tinggi agar tidak memotong tombol bawah */
+    aspect-ratio: 600 / 400;
+    margin-bottom: 8px;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn-container {
+    margin-top: 5px;
+  }
+
+  #playBtn, #restartBtn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  /* ==========================================
+     SAAT HP MASUK MODE FULLSCREEN / LANDSCAPE
+     ========================================== */
+  #game-zone:fullscreen {
+    padding: 5px;
+    justify-content: center; /* Pusatkan game di tengah layar hitam */
+    background: #111;
+  }
+
+  #game-zone:fullscreen .canvas-container {
+    max-width: 95vw;  /* Saat fullscreen, maksimalkan lebar hingga 95% layar */
+    max-height: 70vh; /* Naikkan batas tinggi agar area bermain jauh lebih besar */
+  }
+
+  #game-zone:fullscreen .mobile-nav-buttons,
+  #game-zone:fullscreen .hud-container {
+    width: 100%;
+    max-width: 95vw;
+  }
+}

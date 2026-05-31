@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Satu Hari Cerita - Game 2D</title>
+  <link rel="stylesheet" href="../../CSS/style.css">
+  <link rel="stylesheet" href="../../CSS/artikel8.css">
+</head>
+<body>
+
+  <header>
+    <div class="title-section">
+      <h1>Game 2D Website</h1>
+    </div>
+    <nav class="menu-section">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+        <li><a href="../rumus.html">Rumus</a></li>
+        <li class="search-menu">
+          <input type="text" id="searchInput" placeholder="Cari postingan...">
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div id="game-zone">
+    
+    <div class="mobile-nav-buttons">
+      <button id="fullscreenBtn">⛶ Fullscreen</button>
+      <button id="exitBtn">✕ Exit</button>
+    </div>
+
+    <div class="hud-container">
+      <div id="score" class="hud-item">Skor: 0</div>
+      <div id="level" class="hud-item">Level: 0</div>
+      <div id="bestScore" class="hud-item">Best Skor: 0</div>
+    </div>
+
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="600" height="400"></canvas>
+    </div>
+
+    <div class="btn-container">
+      <button id="playBtn">Play</button>
+      <button id="restartBtn" style="display: none;">Restart</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Game 2D Website</p>
+  </footer>
+
+  <div id="joystick-container">
+    <div id="joystick-base"></div>
+    <div id="joystick-stick"></div>
+  </div>
+
+  <script src="/js/games/artikel8.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Persegi Panjang</title>
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="../../CSS/style.css">
+  <!-- CSS Khusus Artikel5 -->
+  <link rel="stylesheet" href="../../CSS/artikel5.css">
+</head>
+<body class="artikel5-page" data-article-id="artikel5">
+  
+  <!-- Header -->
+  <header>
+    <div class="title-section">
+      <h1>Kalkulator Persegi Panjang</h1>
+    </div>
+    <!-- Menu Navigasi -->
+    <nav class="menu-section">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+        <li><a href="../rumus.html">Rumus</a></li>
+        <li class="search-menu">
+          <input type="text" id="searchInput" placeholder="Cari postingan...">
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Gambar Rumus -->
+  <div class="image-box">
+    <a href="../Images/rumus1.png" target="_blank">
+      <img src="../Images/rumus1.png" alt="Rumus Persegi Panjang">
+    </a>
+  </div>
+
+  <!-- Konten Utama -->
+  <main>
+    <div class="container">
+      <h2>Kalkulator Persegi Panjang</h2>
+      <p>Rumus Luas (L): L = p × l</p>
+      <p>Rumus Keliling (K): K = 2 × (p + l)</p>
+
+      <!-- Input -->
+      <label for="panjang">Panjang:</label>
+      <input type="number" id="panjang" placeholder="Masukkan panjang" oninput="updateRectangle()">
+
+      <label for="lebar">Lebar:</label>
+      <input type="number" id="lebar" placeholder="Masukkan lebar" oninput="updateRectangle()">
+
+      <!-- Hasil -->
+      <div class="result" id="hasil"></div>
+      
+      <!-- Preview Kotak -->
+      <div class="preview">
+        <div id="persegiPanjang" class="kotak">
+          <!-- Label sisi -->
+          <span id="panjangLabel" class="label-horiz">p = …</span>
+          <span id="lebarLabel" class="label-vert">l = …</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Script -->
+  <script src="/js/rumus/artikel5.js"></script>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Kalkulator Persegi Panjang</p>
+  </footer>
+</body>
+</html>
