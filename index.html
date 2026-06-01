@@ -2,18 +2,12 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <!-- Penting untuk responsif di HP -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <title>Satu Hari Cerita</title>
-  
-  <!-- CSS utama -->
   <link rel="stylesheet" href="./CSS/style.css">
-  
-  <!-- MathJax untuk rumus -->
   <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body class="index-page">
   
@@ -46,19 +40,19 @@
     </aside>
   </div>
 
-  <!-- Pagination -->
+  <!-- Script eksternal -->
+  <script src="./js/index.js"></script>
+
   <div class="pagination">
-    <button id="prevBtn">Sebelumnya</button>
-    <div id="pageNumbers"></div>
-    <button id="nextBtn">Berikutnya</button>
-  </div>
+  <button id="prevBtn">Sebelumnya</button>
+  <div id="pageNumbers"></div>
+  <button id="nextBtn">Berikutnya</button>
+</div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 My Website</p>
   </footer>
-
-  <!-- Script eksternal (taruh di akhir agar load lebih cepat) -->
-  <script src="./js/index.js"></script>
+  
 </body>
 </html>

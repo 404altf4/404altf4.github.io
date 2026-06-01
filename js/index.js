@@ -1,23 +1,47 @@
-let articles = [];
+// ==========================================================================
+// 1. Variabel Global
+// ==========================================================================
+let articles = [];         // Menyimpan semua data artikel asli dari posts.json
+let currentData = [];      // Menyimpan data aktif (bisa artikel utuh atau hasil filter pencarian)
+let currentPage = 1;       // Halaman yang sedang aktif saat ini
+const postsPerPage = 4;    // Jumlah artikel yang tampil per halaman
 
-// Load data dari posts.json
+// ==========================================================================
+// 2. Inisialisasi: Load Data dari posts.json
+// ==========================================================================
 fetch("Konten/posts.json")
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Gagal mengambil data dari server");
+    return res.json();
+  })
   .then(data => {
+    // Filter data yang tipenya benar-benar "artikel"
     articles = data.filter(post => post.type === "artikel");
+    currentData = articles; // Default awal data aktif adalah semua artikel
 
-    // tampilkan 4 artikel terbaru
-    renderPosts(articles.slice(0, 4));
+    // Tampilkan data & tombol halaman pertama kali
+    renderPagination(currentData);
 
-    // tampilkan popular posts
+    // Tampilkan daftar artikel populer (menggunakan semua data asli)
     renderPopular(data);
   })
   .catch(err => console.error("Gagal load posts.json:", err));
 
-// Render artikel ke halaman utama
+// ==========================================================================
+// 3. Render Artikel Utama (Berdasarkan Potongan Halaman)
+// ==========================================================================
 function renderPosts(list) {
   const container = document.getElementById("post-list");
+  if (!container) return; // Keamanan jika elemen tidak ditemukan di HTML
+  
   container.innerHTML = "";
+
+  // Jika tidak ada artikel ditemukan (misal saat mengetik pencarian asal)
+  if (list.length === 0) {
+    container.innerHTML = `<p class="empty-message" style="text-align:center; color:#888;">Artikel tidak ditemukan.</p>`;
+    return;
+  }
+
   list.forEach(post => {
     const article = document.createElement("article");
     article.className = "timeline";
@@ -36,30 +60,104 @@ function renderPosts(list) {
   });
 }
 
-// Event pencarian
-document.getElementById("searchInput").addEventListener("keyup", function() {
-  const keyword = this.value.toLowerCase();
-  const filtered = articles.filter(post =>
+// ==========================================
+// KODE PAGINATION & EVENT TOMBOL (VERSI AMAN)
+// ==========================================
+function renderPagination(data) {
+  const totalPages = Math.ceil(data.length / postsPerPage) || 1;
+
+  if (currentPage > totalPages) {
+    currentPage = totalPages;
+  }
+
+  // Potong data untuk ditampilkan
+  const start = (currentPage - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  renderPosts(data.slice(start, end));
+
+  // Render Angka (1, 2, 3)
+  const pageNumbers = document.getElementById("pageNumbers");
+  if (pageNumbers) {
+    pageNumbers.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active");
+      
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderPagination(currentData);
+      });
+      pageNumbers.appendChild(btn);
+    }
+  }
+
+  // KONTROL UTAMA TOMBOL PREV & NEXT
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (prevBtn) {
+    // Atur tombol mati/aktif
+    prevBtn.disabled = (currentPage === 1);
+    
+    // Hapus event listener lama agar tidak double klik, lalu pasang yang baru
+    prevBtn.onclick = () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderPagination(currentData);
+      }
+    };
+  }
+
+  if (nextBtn) {
+    // Atur tombol mati/aktif
+    nextBtn.disabled = (currentPage === totalPages || data.length === 0);
+    
+    // Hapus event listener lama agar tidak double klik, lalu pasang yang baru
+    nextBtn.onclick = () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderPagination(currentData);
+      }
+    };
+  }
+}
+
+// ==========================================================================
+// 6. Fitur Pencarian (Real-time Filter)
+// ==========================================================================
+document.getElementById("searchInput")?.addEventListener("keyup", function() {
+  const keyword = this.value.toLowerCase().trim();
+
+  // Filter artikel berdasarkan judul atau deskripsi yang mengandung keyword
+  currentData = articles.filter(post =>
     post.title.toLowerCase().includes(keyword) ||
     post.desc.toLowerCase().includes(keyword)
   );
-  renderPosts(filtered);
+
+  // Setiap kali mencari, kembalikan posisi fokus ke halaman 1
+  currentPage = 1;
+  renderPagination(currentData);
 });
 
-// Render popular posts
+// ==========================================================================
+// 7. Render Artikel Populer (Berdasarkan jumlah views di LocalStorage)
+// ==========================================================================
 function renderPopular(data) {
   const list = document.getElementById("popular-list");
+  if (!list) return;
+  
   list.innerHTML = "";
 
-  // Tambahkan jumlah views dari LocalStorage
+  // Ambil data jumlah view dari localStorage untuk setiap artikel
   data.forEach(post => {
     post.views = parseInt(localStorage.getItem(post.id)) || 0;
   });
 
-  // Urutkan berdasarkan views tertinggi
+  // Urutkan dari yang paling banyak dikunjungi (descending)
   const popular = [...data].sort((a, b) => b.views - a.views);
 
-  // Ambil 3 teratas
+  // Ambil top 3 teratas untuk ditampilkan
   popular.slice(0, 3).forEach(post => {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -74,55 +172,4 @@ function renderPopular(data) {
     `;
     list.appendChild(li);
   });
-
-
-let currentPage = 1;
-const postsPerPage = 4;
-
-function renderPagination(data) {
-  const totalPages = Math.ceil(data.length / postsPerPage);
-
-  // tampilkan artikel sesuai halaman
-  const start = (currentPage - 1) * postsPerPage;
-  const end = start + postsPerPage;
-  renderPosts(data.slice(start, end));
-
-  // update tombol angka
-  const pageNumbers = document.getElementById("pageNumbers");
-  pageNumbers.innerHTML = "";
-  for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement("button");
-    btn.textContent = i;
-    if (i === currentPage) btn.classList.add("active");
-    btn.addEventListener("click", () => {
-      currentPage = i;
-      renderPagination(data);
-    });
-    pageNumbers.appendChild(btn);
-  }
-  // kontrol tombol prev/next
-  document.getElementById("prevBtn").disabled = currentPage === 1;
-  document.getElementById("nextBtn").disabled = currentPage === totalPages;
 }
-
-// event tombol prev/next
-document.getElementById("prevBtn").addEventListener("click", () => {
-  if (currentPage > 1) {
-    currentPage--;
-    renderPagination(articles);
-  }
-});
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  const totalPages = Math.ceil(articles.length / postsPerPage);
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderPagination(articles);
-  }
-});
-}
-
-
-
-
-

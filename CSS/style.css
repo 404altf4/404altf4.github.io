@@ -11,12 +11,16 @@
    BODY & OVERLAY
 =========================== */
 body {
-  background: url("../../Images/gambar1.png") center/cover no-repeat;
+  background-image: url("../../Images/gambar1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   font-family: Arial, sans-serif;
   min-height: 100vh;
 }
 
+/* Overlay gelap untuk meningkatkan kontras teks */
 body::before {
   content: "";
   position: fixed;
@@ -35,12 +39,11 @@ body::before {
   padding: 1.5rem;
   border-bottom: 4px solid #007BFF;
 }
-
+/* Efek hover pada judul utama */
 .title-section h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   letter-spacing: 1px;
 }
-
 /* ===========================
    MENU SECTION
 =========================== */
@@ -49,22 +52,22 @@ body::before {
   padding: 0.8rem 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
-
+/* Menu */
 .menu-section ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center; /* sejajarkan vertikal */
   gap: 1rem;
-  flex-wrap: wrap; /* biar otomatis turun di layar kecil */
 }
-
+/* Efek hover RGB pada menu */
 .menu-section li {
   background: #555;
   padding: 0.6rem 1.4rem;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
-
+/* Efek hover RGB pada menu */
 .menu-section a {
   color: #fff;
   text-decoration: none;
@@ -72,20 +75,13 @@ body::before {
   letter-spacing: 0.5px;
   display: block;
 }
-
+/* Efek hover RGB pada menu */
 .menu-section li:hover {
   background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
   background-size: 400% 400%;
   animation: rgbShift 3s ease infinite;
   transform: translateY(-2px);
 }
-
-@keyframes rgbShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* ===========================
    SEARCH MENU
 =========================== */
@@ -98,31 +94,28 @@ body::before {
   font-size: 0.9rem;
   box-shadow: 0 0 6px #00ffff;
 }
-
+/* Efek fokus pada input pencarian */
 .search-menu input:focus {
   outline: none;
   border-color: #ff00ff;
   box-shadow: 0 0 10px #ff00ff;
 }
-
+/* Animasi RGB pencarian */
+@keyframes rgbShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 /* ===========================
    MAIN CONTENT
 =========================== */
 main {
   max-width: 1000px;
-  width: 100%;
   margin: 2rem auto;
   padding: 0 1rem;
 }
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 /* ===========================
-   TIMELINE & POSTS
+   INDEX PAGE
 =========================== */
 .index-page .timeline {
   background: rgba(34,34,34,0.8);
@@ -132,7 +125,7 @@ img {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-
+/* Efek hover pada judul timeline */
 .index-page .timeline h2 {
   margin-bottom: 1rem;
   color: #00d4ff;
@@ -141,68 +134,38 @@ img {
   padding-left: 0.5rem;
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
-
+/* Efek hover pada judul timeline */
+.index-page .timeline a {
+  text-decoration: none;
+}
+/* Efek hover pada judul timeline */
 .timeline a:hover h2 {
   color: magenta;
   text-shadow: 0 0 8px rgb(255, 0, 234);
   cursor: pointer;
 }
-
+/* Gaya untuk paragraf dalam timeline */
 .index-page .timeline p {
   margin-bottom: 0.6rem;
   line-height: 1.5;
 }
-
-/* ===========================
-   POPULAR POSTS SIDEBAR
-=========================== */
-.layout {
-  display: flex;
-  gap: 20px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  max-width: 1200px;
-}
-
-.popular-posts {
-  flex: 0 0 300px;
-  background: linear-gradient(to bottom right, #0b1a3a, #1e2a47);
-  color: #fff;
-  padding: 15px;
+/* Thumbnail Gambar Post */
+.index-page .post-thumb {
+  width: 200px;
+  height: 150px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-.popular-posts h2 {
-  color: gold;
-  border-bottom: 2px solid gold;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.popular-posts ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.popular-posts li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  gap: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 10px;
-}
-
-.popular-posts img {
-  width: 70px;
-  height: 70px;
-  border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(0,0,0,0.4);
 }
+
+.post-info a:hover h3 {
+  color: #fa1238;
+  text-shadow: 0 0 6px #ff3300;
+  cursor: pointer;
+}
+
+
+/* Info Post */
 
 .post-info h3 {
   font-size: 1rem;
@@ -228,76 +191,159 @@ img {
 }
 
 /* ===========================
-   PAGINATION
-=========================== */
-.index-page .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 20px 0;
-}
-
-.index-page .pagination button {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background: #007BFF;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.index-page .pagination button:hover {
-  background: #0056b3;
-}
-
-.index-page .pagination .active {
-  background: #ff00ff;
-}
-
-/* ===========================
    FOOTER
 =========================== */
 footer {
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
-  background: #222;
-  color: #fff;
+  width: 100%;              /* penuh dari kiri ke kanan */
+  text-align: center;       /* teks rata tengah */
+  padding: 1.2rem;          /* beri ruang lebih nyaman */
+  background: #222;      /* warna latar */
+  color: #fff;           /* warna teks */
   margin-top: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;       /* sedikit lebih besar agar terbaca */
+  line-height: 1.6;         /* jarak antar baris */
+  border-top: 2px solid rgba(31, 147, 255, 0.2); /* garis pemisah halus */
 }
 
-/* ===========================
-   RESPONSIVE MEDIA QUERIES
-=========================== */
-@media (max-width: 992px) {
-  .layout {
-    flex-direction: column;
-  }
-  .popular-posts {
-    flex: 1 1 auto;
-    margin-top: 20px;
-  }
+/* Tambahan styling untuk teks di footer */
+footer p {
+  margin: 0;                /* hilangkan margin default */
+  font-weight: 400;         /* teks normal */
+  letter-spacing: 0.5px;    /* spasi antar huruf sedikit */
 }
 
-@media (max-width: 768px) {
-  .menu-section ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .title-section h1 {
-    font-size: 1.6rem;
-  }
+
+/* Layout */
+.layout {
+  display: flex;
+  gap: 20px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 1200px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media (max-width: 480px) {
-  .title-section h1 {
-    font-size: 1.4rem;
-  }
-  .popular-posts img {
-    width: 60px;
-    height: 60px;
-  }
+.pagination button {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #dcdcdc;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Efek Hover untuk Tombol Angka & Navigasi */
+.pagination button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #a0a0a0;
+}
+
+/* Gaya untuk Tombol Aktif (Halaman saat ini) */
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+/* Gaya saat Tombol Diblokir (Disabled) */
+.pagination button:disabled {
+  background-color: #f5f5f5;
+  color: #cccccc;
+  border-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+#pageNumbers {
+  display: flex;
+  gap: 6px;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   1. Container Utama Popular Posts (Tinggi Menyesuaikan & Lebar Bisa Diatur)
+   ========================================================================== */
+.popular-posts {
+  flex: 0 0 280px;
+  background: linear-gradient(to bottom right, #0b1a3a, #1e2a47);
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+
+  /* KUNCI: Tinggi otomatis pas sesuai isi artikel di dalamnya */
+  height: max-content; 
+
+  /* Mengizinkan klik & tarik secara horizontal (melebar/menyempit) */
+  resize: horizontal;       
+  overflow: auto;           /* Wajib ada agar fitur resize berfungsi */
+  
+  /* Batasan lebar agar tetap responsif */
+  min-width: 250px;         
+  max-width: 500px;         
+}
+
+/* ==========================================================================
+   2. Komponen Judul & List
+   ========================================================================== */
+/* Judul Popular Posts */
+.popular-posts h2 {
+  color: gold;
+  border-bottom: 2px solid gold;
+  margin-top: 0;           /* Menghilangkan ruang kosong di atas judul */
+  margin-bottom: 15px;     /* Jarak ke artikel di bawahnya (tidak terlalu renggang) */
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Daftar popular posts */
+.popular-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Item popular post */
+.popular-posts li {
+  display: flex;
+  align-items: center;     /* Diubah ke center agar gambar & teks sejajar vertikal dan hemat ruang */
+  margin-bottom: 12px;     /* Jarak antar item sedikit dirapatkan */
+  gap: 12px;               /* Jarak antar gambar & teks */
+  border-bottom: 1px solid rgba(255,255,255,0.1); /* Garis pemisah */
+  padding-bottom: 10px;
+}
+
+/* Menghilangkan garis pembatas di item paling bawah agar rapi */
+.popular-posts li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   3. Thumbnail / Gambar
+   ========================================================================== */
+/* Gambar popular posts (Gunakan ukuran 70px agar kotak tidak meninggi) */
+.popular-posts .popular-thumb,
+.popular-posts img {
+  width: 70px;  
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
