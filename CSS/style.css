@@ -44,103 +44,7 @@ body::before {
   font-size: 2.2rem;
   letter-spacing: 1px;
 }
-/* ==========================================================================
-   MENU SECTION (Navigasi Utama)
-   ========================================================================== */
-.menu-section {
-  background: #1a1a1a; /* Diubah ke hitam yang lebih pekat & modern */
-  padding: 0.7rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-/* Container List Menu */
-.menu-section ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  gap: 1.2rem; /* Jarak antar menu sedikit diperlebar agar lega */
-  padding: 0;
-  margin: 0;
-}
-
-/* Item Menu (Tombol) */
-.menu-section li {
-  background: #2a2a2a; /* Warna dasar tombol lebih lembut dibanding background */
-  border-radius: 8px; /* Sudut sedikit lebih melengkung modern */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Link Teks di Dalam Menu */
-.menu-section a {
-  color: #e0e0e0;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  padding: 0.6rem 1.4rem; /* Padding dipindah ke tag 'a' agar seluruh kotak bisa diklik */
-  display: block;
-  transition: color 0.3s ease;
-}
-
-/* ==========================================================================
-   Efek Hover Efek Animasi Gradasi Berwarna (RGB Modern)
-   ========================================================================== */
-.menu-section li:hover {
-  /* Menggunakan perpaduan warna gradasi RGB modern yang tidak merusak mata */
-  background: linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff, #ff007f);
-  background-size: 300% 300%;
-  animation: rgbShift 4s linear infinite;
-  transform: translateY(-3px); /* Efek mengangkat sedikit saat didekati mouse */
-  box-shadow: 0 5px 15px rgba(127, 0, 255, 0.4); /* Efek pendaran cahaya/glow */
-}
-
-/* Teks otomatis berubah putih bersih saat di-hover */
-.menu-section li:hover a {
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   Sistem Animasi Pergeseran Warna (Wajib Ada)
-   ========================================================================== */
-@keyframes rgbShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-/* ===========================
-   SEARCH MENU
-=========================== */
-.search-menu input {
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  border: 2px solid #682f2f;
-  background: #111;
-  color: #fff;
-  font-size: 0.9rem;
-  box-shadow: 0 0 6px #00ffff;
-}
-/* Efek fokus pada input pencarian */
-.search-menu input:focus {
-  outline: none;
-  border-color: #ff00ff;
-  box-shadow: 0 0 10px #ff00ff;
-}
-/* Animasi RGB pencarian */
-@keyframes rgbShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 /* ===========================
    MAIN CONTENT
 =========================== */
@@ -382,3 +286,7 @@ footer p {
   flex-shrink: 0;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
+
+
+
+

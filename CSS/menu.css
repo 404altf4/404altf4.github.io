@@ -1,0 +1,82 @@
+
+/* Menu Section */
+.menu-section {
+  background: #1a1a1a;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container menu + search box */
+.menu-container {
+  display: flex;
+  justify-content: center;   /* semua elemen di tengah */
+  align-items: center;
+  gap: 2rem;                 /* jarak antara menu dan search box */
+}
+
+/* Daftar menu */
+.menu-container ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Item menu */
+.menu-container li {
+  background: #2a2a2a;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-container a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.6rem 1.4rem;
+  display: block;
+}
+
+/* Hover efek RGB */
+.menu-container li:hover {
+  background: linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff, #ff007f);
+  background-size: 300% 300%;
+  animation: rgbShift 4s linear infinite;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(127,0,255,0.4);
+}
+
+.menu-container li:hover a {
+  color: #fff;
+}
+
+/* Search box */
+.search-box input {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Hover/focus efek RGB */
+.search-box input:hover,
+.search-box input:focus {
+  background: linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff, #ff007f);
+  background-size: 300% 300%;
+  animation: rgbShift 4s linear infinite;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(127, 0, 255, 0.5);
+}
+
+/* Animasi gradasi */
+@keyframes rgbShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
