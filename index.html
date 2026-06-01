@@ -6,8 +6,8 @@
   <title>Satu Hari Cerita</title>
   <link rel="stylesheet" href="./CSS/style.css">
   <script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 </head>
 <body class="index-page">
   
@@ -16,17 +16,8 @@
     <h1>Satu Hari Cerita</h1>
   </header>
 
-  <!-- Menu Navigasi -->
-  <nav class="menu-section">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="games.html">Games</a></li>
-      <li><a href="rumus.html">Rumus</a></li>
-      <li class="search-menu">
-        <input type="text" id="searchInput" placeholder="Cari postingan...">
-      </li>
-    </ul>
-  </nav>
+  <!-- Menu Navigasi (diambil dari menu.html) -->
+  <div id="menu"></div>
 
   <!-- Layout Utama -->
   <div class="layout">
@@ -40,19 +31,20 @@
     </aside>
   </div>
 
-  <!-- Script eksternal -->
-  <script src="./js/index.js"></script>
-
+  <!-- Pagination -->
   <div class="pagination">
-  <button id="prevBtn">Sebelumnya</button>
-  <div id="pageNumbers"></div>
-  <button id="nextBtn">Berikutnya</button>
-</div>
+    <button id="prevBtn">Sebelumnya</button>
+    <div id="pageNumbers"></div>
+    <button id="nextBtn">Berikutnya</button>
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 My Website</p>
   </footer>
-  
+
+  <!-- Script eksternal -->
+  <script src="./js/index.js"></script>
+  <script src="./js/menu.js"></script>
 </body>
 </html>
