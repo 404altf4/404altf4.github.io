@@ -17,7 +17,7 @@ const bestDisplay = document.getElementById("bestScore");
 // ==========================================
 const COLS = 10;
 const ROWS = 20;
-const BLOCK_SIZE = 30; // Ukuran internal grid canvas tetap (30px)
+const BLOCK_SIZE = 30;
 
 let board = [];
 let currentPiece, nextPiece;
@@ -54,15 +54,13 @@ function randomPiece() {
 }
 
 // ==========================================
-// Logika Rendering (Gambar Grafik)
+// Rendering
 // ==========================================
 function drawBoard() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   board.forEach((row, y) => {
     row.forEach((cell, x) => {
-      if (cell) {
-        drawBlock(ctx, x, y, cell);
-      }
+      if (cell) drawBlock(ctx, x, y, cell);
     });
   });
 }
@@ -70,7 +68,7 @@ function drawBoard() {
 function drawBlock(context, x, y, color) {
   context.fillStyle = color;
   context.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-  context.strokeStyle = "#000000";
+  context.strokeStyle = "#000";
   context.lineWidth = 1.5;
   context.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
@@ -87,12 +85,9 @@ function drawPiece(piece, context = ctx, offsetX = 0, offsetY = 0) {
 
 function drawNextPiece() {
   nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
-  // Sesuaikan penempatan preview di canvas kecil
   let preview = { ...nextPiece, x: 0, y: 0 };
-  
-  // Kecilkan sedikit block size khusus pada canvas preview jika kepotong
   nextCtx.save();
-  nextCtx.scale(0.8, 0.8); 
+  nextCtx.scale(0.8, 0.8);
   drawPiece(preview, nextCtx, 0.5, 0.5);
   nextCtx.restore();
 }
@@ -119,25 +114,33 @@ function clearLines() {
     }
     return true;
   });
-  
+
   while (board.length < ROWS) {
     board.unshift(Array(COLS).fill(null));
   }
 
   if (linesCleared > 0) {
-    score += linesCleared * 10;
-    scoreDisplay.textContent = "Skor: " + score;
+    // Hitung skor + bonus
+    let basePoints = linesCleared * 10;
+    let bonus = (linesCleared > 1) ? (linesCleared - 1) * 5 : 0;
+    score += basePoints + bonus;
 
-    if (score % 100 === 0) {
-      level++;
-      levelDisplay.textContent = "Level: " + level;
-      if (speed > 150) {
-        clearInterval(gameInterval);
-        speed -= 50;
-        gameInterval = setInterval(update, speed);
-      }
+    // Hitung level otomatis dari skor
+    level = Math.floor(score / 100);
+
+    // Update HUD
+    scoreDisplay.textContent = "Skor: " + score;
+    levelDisplay.textContent = "Level: " + level;
+
+    // Update speed sesuai level
+    if (speed > 150) {
+      clearInterval(gameInterval);
+      speed = 500 - (level * 50);
+      if (speed < 150) speed = 150;
+      gameInterval = setInterval(update, speed);
     }
 
+    // Best score
     if (score > bestScore) {
       bestScore = score;
       localStorage.setItem("bestScore", bestScore);
@@ -171,7 +174,7 @@ function update() {
     currentPiece = nextPiece;
     nextPiece = randomPiece();
     drawNextPiece();
-    
+
     if (collide(currentPiece)) {
       alert("Game Over! Skor kamu: " + score);
       clearInterval(gameInterval);
@@ -185,7 +188,7 @@ function update() {
 }
 
 // ==========================================
-// Kontrol Tombol Menu Utama
+// Kontrol Menu
 // ==========================================
 playBtn.addEventListener("click", () => {
   if (!playing) {
@@ -212,11 +215,11 @@ restartBtn.addEventListener("click", () => {
 });
 
 // ==========================================
-// Fungsi Pengendali Gerakan
+// Kontrol Gerakan
 // ==========================================
 function movePiece(dir) {
   if (!playing) return;
-  
+
   let oldX = currentPiece.x;
   let oldY = currentPiece.y;
   let oldShape = currentPiece.shape.map(r => [...r]);
@@ -240,7 +243,7 @@ function movePiece(dir) {
   drawPiece(currentPiece);
 }
 
-// Event Keyboard PC
+// Keyboard
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowLeft") movePiece("left");
   if (e.key === "ArrowRight") movePiece("right");
@@ -248,12 +251,12 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowUp") movePiece("rotate");
 });
 
-// Event Tombol Sentuh HP (Gunakan touchstart untuk respons secepat kilat)
+// Mobile
 const bindMobileEvent = (id, action) => {
   const el = document.getElementById(id);
   if (el) {
     el.addEventListener("touchstart", (e) => {
-      e.preventDefault(); // Mencegah zoom layar seluler otomatis saat ditekan ganda
+      e.preventDefault();
       movePiece(action);
     }, { passive: false });
   }
