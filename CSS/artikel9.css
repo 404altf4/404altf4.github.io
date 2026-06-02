@@ -1,102 +1,149 @@
-/* Styling khusus untuk halaman game artikel9 */
+/* ==========================================================================
+   Tata Letak Utama Game Zone
+   ========================================================================== */
 #game-zone {
   text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
+  margin: 10px auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  user-select: none;
 }
 
-/* HUD */
-#game-zone .hud-container {
+/* HUD Panel */
+.hud-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin: 10px 0;
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
-#game-zone .hud-item {
+.hud-item {
   background: #111;
-  border: 2px solid #0f0;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: #0f0;
+  border: 2px solid #00ff88;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #00ff88;
   font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 0 5px rgba(0, 255, 136, 0.2);
 }
 
-/* Layout utama: canvas + next block */
-#game-zone .layout {
+/* Susunan Arena & Komponen Samping */
+.layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 20px;
-  margin-top: 15px;
+  gap: 15px;
 }
 
-#game-zone #gameCanvas {
+.canvas-wrapper {
   background: #111;
-  border: 2px solid #0f0;
+  border: 3px solid #00ff88;
+  border-radius: 8px;
+  overflow: hidden;
+  line-height: 0;
 }
 
-#game-zone .next-piece {
-  color: #0f0;
-  text-align: center;
+#gameCanvas {
+  background: #000;
+  display: block;
 }
 
-#game-zone #nextCanvas {
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.next-piece {
+  color: #00ff88;
   background: #111;
-  border: 2px solid #0f0;
+  border: 2px solid #00ff88;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-/* Tombol kontrol */
-#game-zone .btn-container {
-  margin-top: 15px;
+.next-piece h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
 }
 
-#game-zone button {
-  background: #0f0;
+#nextCanvas {
+  background: #000;
+  border-radius: 4px;
+}
+
+/* Tombol Aksi */
+.btn-container button {
+  background: #00ff88;
   color: #000;
   font-weight: bold;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
-  margin: 0 5px;
+  width: 100%;
+  transition: all 0.2s ease;
 }
 
-#game-zone button:hover {
-  background: #00ff88;
-  box-shadow: 0 0 10px #00ff88;
-}
-#joystick-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 100px;
-  height: 100px;
-  touch-action: none;
+.btn-container button:hover {
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
 }
 
-#joystick-base {
-  width: 100px;
-  height: 100px;
-  background: rgba(0,255,0,0.2);
-  border: 2px solid #0f0;
-  border-radius: 50%;
-  position: absolute;
+/* ==========================================================================
+   Kontrol Navigasi HP (Hanya Muncul Otomatis di Layar Sentuh)
+   ========================================================================== */
+.mobile-controls {
+  display: none; /* Default sembunyi di PC desktop */
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0 10px;
 }
 
-#joystick-stick {
-  width: 50px;
-  height: 50px;
-  background: #0f0;
-  border-radius: 50%;
-  position: absolute;
-  top: 25px;
-  left: 25px;
+.mobile-controls button {
+  font-size: 24px;
+  padding: 15px;
+  flex: 1;
+  max-width: 70px;
+  border-radius: 50%; /* Membuat tombol berbentuk bulat */
+  border: 2px solid #00ff88;
+  background: #111;
+  color: #00ff88;
+  cursor: pointer;
+  touch-action: manipulation;
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden; /* mencegah scroll */
-  touch-action: none; /* mencegah geser default browser */
+
+/* ==========================================================================
+   MEDIA QUERY: Optimasi Khusus Pengguna HP / Smartphone
+   ========================================================================== */
+@media (max-width: 480px) {
+  .mobile-controls {
+    display: flex; /* Aktifkan tombol navigasi di HP */
+  }
+
+  .layout {
+    flex-direction: column; /* Ubah susunan menjadi vertikal ke bawah */
+    align-items: center;
+  }
+
+  .sidebar {
+    flex-direction: row; /* Next block dan tombol play sejajar ke samping */
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Perkecil visual canvas di HP agar pas dengan resolusi layar */
+  #gameCanvas {
+    width: 240px;
+    height: 480px;
+  }
 }

@@ -2,6 +2,15 @@
   {
     "id": "artikel9",
     "type": "artikel",
+    "title": "Biaya Perhitungan",
+    "desc": "Biaya Perhitungan.",
+    "link": "Konten/artikel10.html",
+    "image": "Images/biaya.png",
+    "category": "Perhitungan"
+  },
+  {
+    "id": "artikel9",
+    "type": "artikel",
     "title": "Tetris",
     "desc": "Game Tetris.",
     "link": "Konten/artikel9.html",

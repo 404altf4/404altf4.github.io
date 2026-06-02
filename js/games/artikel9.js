@@ -1,3 +1,6 @@
+// ==========================================
+// Inisialisasi Elemen Canvas & HUD
+// ==========================================
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const nextCanvas = document.getElementById("nextCanvas");
@@ -9,9 +12,13 @@ const scoreDisplay = document.getElementById("score");
 const levelDisplay = document.getElementById("level");
 const bestDisplay = document.getElementById("bestScore");
 
+// ==========================================
+// Pengaturan Dimensi Game
+// ==========================================
 const COLS = 10;
 const ROWS = 20;
-const BLOCK_SIZE = 30;
+const BLOCK_SIZE = 30; // Ukuran internal grid canvas tetap (30px)
+
 let board = [];
 let currentPiece, nextPiece;
 let score = 0;
@@ -22,49 +29,57 @@ let gameInterval;
 let bestScore = localStorage.getItem("bestScore") || 0;
 bestDisplay.textContent = "Best Skor: " + bestScore;
 
+// ==========================================
+// Mekanik Game Dasar
+// ==========================================
 function createBoard() {
   board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
 }
 
 function randomColor() {
-  const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+  const colors = ["#ff3333", "#33ff33", "#3333ff", "#ffff33", "#ff33ff", "#33ffff"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function randomPiece() {
   const shapes = [
-    [[1,1,1,1]], // I
-    [[1,1],[1,1]], // O
-    [[0,1,0],[1,1,1]], // T
-    [[1,1,0],[0,1,1]], // S
-    [[0,1,1],[1,1,0]]  // Z
+    [[1,1,1,1]],         // I
+    [[1,1],[1,1]],       // O
+    [[0,1,0],[1,1,1]],   // T
+    [[1,1,0],[0,1,1]],   // S
+    [[0,1,1],[1,1,0]]    // Z
   ];
   const shape = shapes[Math.floor(Math.random() * shapes.length)];
   return { shape, color: randomColor(), x: 3, y: 0 };
 }
 
+// ==========================================
+// Logika Rendering (Gambar Grafik)
+// ==========================================
 function drawBoard() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   board.forEach((row, y) => {
     row.forEach((cell, x) => {
       if (cell) {
-        ctx.fillStyle = cell;
-        ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-        ctx.strokeStyle = "#000";
-        ctx.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+        drawBlock(ctx, x, y, cell);
       }
     });
   });
+}
+
+function drawBlock(context, x, y, color) {
+  context.fillStyle = color;
+  context.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+  context.strokeStyle = "#000000";
+  context.lineWidth = 1.5;
+  context.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
 
 function drawPiece(piece, context = ctx, offsetX = 0, offsetY = 0) {
   piece.shape.forEach((row, dy) => {
     row.forEach((val, dx) => {
       if (val) {
-        context.fillStyle = piece.color;
-        context.fillRect((piece.x + dx + offsetX) * BLOCK_SIZE, (piece.y + dy + offsetY) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-        context.strokeStyle = "#000";
-        context.strokeRect((piece.x + dx + offsetX) * BLOCK_SIZE, (piece.y + dy + offsetY) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+        drawBlock(context, piece.x + dx + offsetX, piece.y + dy + offsetY, piece.color);
       }
     });
   });
@@ -72,10 +87,19 @@ function drawPiece(piece, context = ctx, offsetX = 0, offsetY = 0) {
 
 function drawNextPiece() {
   nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
-  let preview = { ...nextPiece, x: 1, y: 1 };
-  drawPiece(preview, nextCtx, 0, 0);
+  // Sesuaikan penempatan preview di canvas kecil
+  let preview = { ...nextPiece, x: 0, y: 0 };
+  
+  // Kecilkan sedikit block size khusus pada canvas preview jika kepotong
+  nextCtx.save();
+  nextCtx.scale(0.8, 0.8); 
+  drawPiece(preview, nextCtx, 0.5, 0.5);
+  nextCtx.restore();
 }
 
+// ==========================================
+// Aturan Tabrakan & Line Clearing
+// ==========================================
 function mergePiece() {
   currentPiece.shape.forEach((row, dy) => {
     row.forEach((val, dx) => {
@@ -95,20 +119,19 @@ function clearLines() {
     }
     return true;
   });
-  while (board.length < ROWS) board.unshift(Array(COLS).fill(null));
+  
+  while (board.length < ROWS) {
+    board.unshift(Array(COLS).fill(null));
+  }
 
   if (linesCleared > 0) {
     score += linesCleared * 10;
     scoreDisplay.textContent = "Skor: " + score;
 
-    if (score % 10 === 0) {
-      console.log("Pencapaian: 10 skor!");
-    }
-
     if (score % 100 === 0) {
       level++;
       levelDisplay.textContent = "Level: " + level;
-      if (speed > 100) {
+      if (speed > 150) {
         clearInterval(gameInterval);
         speed -= 50;
         gameInterval = setInterval(update, speed);
@@ -148,17 +171,22 @@ function update() {
     currentPiece = nextPiece;
     nextPiece = randomPiece();
     drawNextPiece();
+    
     if (collide(currentPiece)) {
       alert("Game Over! Skor kamu: " + score);
       clearInterval(gameInterval);
       playing = false;
       restartBtn.style.display = "inline-block";
+      playBtn.style.display = "none";
     }
   }
   drawBoard();
   drawPiece(currentPiece);
 }
 
+// ==========================================
+// Kontrol Tombol Menu Utama
+// ==========================================
 playBtn.addEventListener("click", () => {
   if (!playing) {
     playing = true;
@@ -179,19 +207,24 @@ playBtn.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
   playing = false;
   clearInterval(gameInterval);
+  playBtn.style.display = "inline-block";
   playBtn.click();
 });
 
-document.addEventListener("keydown", e => {
+// ==========================================
+// Fungsi Pengendali Gerakan
+// ==========================================
+function movePiece(dir) {
   if (!playing) return;
+  
   let oldX = currentPiece.x;
   let oldY = currentPiece.y;
   let oldShape = currentPiece.shape.map(r => [...r]);
 
-  if (e.key === "ArrowLeft") currentPiece.x--;
-  if (e.key === "ArrowRight") currentPiece.x++;
-  if (e.key === "ArrowDown") currentPiece.y++;
-  if (e.key === "ArrowUp") {
+  if (dir === "left") currentPiece.x--;
+  if (dir === "right") currentPiece.x++;
+  if (dir === "down") currentPiece.y++;
+  if (dir === "rotate") {
     currentPiece.shape = currentPiece.shape[0].map((_, i) =>
       currentPiece.shape.map(row => row[i]).reverse()
     );
@@ -205,4 +238,28 @@ document.addEventListener("keydown", e => {
 
   drawBoard();
   drawPiece(currentPiece);
+}
+
+// Event Keyboard PC
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft") movePiece("left");
+  if (e.key === "ArrowRight") movePiece("right");
+  if (e.key === "ArrowDown") movePiece("down");
+  if (e.key === "ArrowUp") movePiece("rotate");
 });
+
+// Event Tombol Sentuh HP (Gunakan touchstart untuk respons secepat kilat)
+const bindMobileEvent = (id, action) => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener("touchstart", (e) => {
+      e.preventDefault(); // Mencegah zoom layar seluler otomatis saat ditekan ganda
+      movePiece(action);
+    }, { passive: false });
+  }
+};
+
+bindMobileEvent("leftBtn", "left");
+bindMobileEvent("rightBtn", "right");
+bindMobileEvent("downBtn", "down");
+bindMobileEvent("rotateBtn", "rotate");
