@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - Tulis Artikel</title>
+  
+  <!-- Integrasi File CSS Eksternal -->
+  <link rel="stylesheet" href="/CSS/style-admin.css">
+  
+  <!-- Integrasi TinyMCE Editor (Gratis via CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>📝 Tulis Artikel Baru</h1>
+      <p class="subtitle">Ketik tulisanmu di sini dan publikasikan langsung ke blog milikmu</p>
+    </header>
+
+    <form id="articleForm">
+      <!-- Input Judul -->
+      <div class="form-group">
+        <label for="judul">Judul Artikel</label>
+        <input type="text" id="judul" placeholder="Masukkan judul yang menarik..." required>
+      </div>
+
+      <!-- Kategori Artikel -->
+      <div class="form-group">
+        <label for="kategori">Kategori</label>
+        <select id="kategori">
+          <option value="Teknologi">💻 Teknologi</option>
+          <option value="Finansial">💰 Finansial</option>
+          <option value="Gaya Hidup">☕ Gaya Hidup</option>
+          <option value="Catatan Harian">📖 Catatan Harian</option>
+        </select>
+      </div>
+
+      <!-- Kotak Teks Utama -->
+      <div class="form-group">
+        <label for="isiArtikel">Isi Artikel</label>
+        <textarea id="isiArtikel" placeholder="Mulai menulis cerita/artikel kamu di sini..."></textarea>
+      </div>
+
+      <!-- Tombol Publish -->
+      <button type="button" id="btnPublish" onclick="publishArtikel()">🚀 Publikasikan Artikel</button>
+    </form>
+  </div>
+
+  <!-- Integrasi File JavaScript Eksternal -->
+  <script src="/js/app-admin.js"></script>
+</body>
+</html>
