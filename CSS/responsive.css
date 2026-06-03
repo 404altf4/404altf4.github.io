@@ -18,9 +18,10 @@
   .popular-posts {
     max-width: 100%;
     margin-top: 1rem;
+    resize: none; /* di HP tidak perlu resize manual */
   }
 
-  /* Gambar artikel menyesuaikan layar */
+  /* Gambar artikel & popular posts menyesuaikan layar */
   .post-thumb,
   .popular-posts img {
     width: 100%;
@@ -68,5 +69,16 @@
   .popular-posts img {
     width: 60px;
     height: 60px;
+  }
+
+  /* Pagination lebih rapat */
+  .pagination {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pagination button {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 }
